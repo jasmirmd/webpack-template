@@ -10,11 +10,11 @@
 		}
 	},
 	"javascript": {
-    "formatter": {
+		"formatter": {
 			"indentStyle": "space",
 			"indentWidth": 2,
 			"trailingCommas": "none",
-      "quoteStyle": "single"
-    }
-  }
+			"quoteStyle": "single"
+		}
+	}
 }
