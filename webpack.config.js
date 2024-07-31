@@ -1,10 +1,14 @@
+// biome-ignore lint/style/useNodejsImportProtocol: <explanation>
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const cssRule = { test: /\.css$/i, use: ['style-loader', 'css-loader'] };
 const imgRule = { test: /\.(png|svg|jpg|jpeg|gif)$/i, type: 'asset/resource' };
-const fontRule = { test: /\.(woff|woff2|eot|ttf|otf)$/i, type: 'asset/resource' };
+const fontRule = {
+  test: /\.(woff|woff2|eot|ttf|otf)$/i,
+  type: 'asset/resource'
+};
 
 module.exports = {
   mode: 'development',
@@ -16,7 +20,7 @@ module.exports = {
   },
 
   module: {
-    rules: [ cssRule, imgRule, fontRule ]
+    rules: [cssRule, imgRule, fontRule]
   },
 
   plugins: [
