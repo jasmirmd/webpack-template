@@ -1,1 +1,1 @@
-# My personal Webpack template with Tailwind and Biome
+# Webpack template with Tailwind and Biome
