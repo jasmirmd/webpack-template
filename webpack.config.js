@@ -3,8 +3,14 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const cssRule = { test: /\.css$/i, use: ['style-loader', 'css-loader'] };
 const imgRule = { test: /\.(png|svg|jpg|jpeg|gif)$/i, type: 'asset/resource' };
+
+const cssRule = {
+  test: /\.css$/i,
+  include: path.resolve(__dirname, 'src'),
+  use: ['style-loader', 'css-loader', 'postcss-loader']
+};
+
 const fontRule = {
   test: /\.(woff|woff2|eot|ttf|otf)$/i,
   type: 'asset/resource'
@@ -26,17 +32,22 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'public/index.html'
+      template: 'src/index.html'
     })
   ],
 
   devServer: {
+    static: {
+      directory: path.resolve(__dirname, 'dist')
+    },
+    client: {
+      overlay: true
+    },
+    watchFiles: ['src/*.html'],
     hot: true,
     open: true,
     port: 8080,
-    watchFiles: ['public/*.html'],
-    client: {
-      overlay: true
-    }
+    compress: true,
+    historyApiFallback: true
   }
 };
