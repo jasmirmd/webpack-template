@@ -1,1 +1,2 @@
-# Webpack template with Tailwind and Biome
+# Webpack template 
+Basic webpack template (biome + tailwind) for simple projects, made especially for own use
