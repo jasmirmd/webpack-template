@@ -5,11 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const imgRule = { test: /\.(png|svg|jpg|jpeg|gif)$/i, type: 'asset/resource' };
 
-const cssRule = {
-  test: /\.css$/i,
-  include: path.resolve(__dirname, 'src'),
-  use: ['style-loader', 'css-loader', 'postcss-loader']
-};
+const cssRule = { test: /\.css$/i, use: ['style-loader', 'css-loader'] };
 
 const fontRule = {
   test: /\.(woff|woff2|eot|ttf|otf)$/i,
@@ -37,9 +33,6 @@ module.exports = {
   ],
 
   devServer: {
-    static: {
-      directory: path.resolve(__dirname, 'dist')
-    },
     client: {
       overlay: true
     },
@@ -47,7 +40,5 @@ module.exports = {
     hot: true,
     open: true,
     port: 8080,
-    compress: true,
-    historyApiFallback: true
   }
 };
