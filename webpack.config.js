@@ -38,7 +38,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'src/index.html'
+      template: 'public/index.html'
     })
   ],
 
@@ -46,7 +46,7 @@ module.exports = {
     client: {
       overlay: true
     },
-    watchFiles: ['src/*.html'],
+    watchFiles: ['public/*.html'],
     hot: true,
     open: true,
     port: 8080
