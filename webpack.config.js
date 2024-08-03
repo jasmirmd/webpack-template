@@ -12,6 +12,17 @@ const fontRule = {
   type: 'asset/resource'
 };
 
+const babelRule = {
+  test: /\.(?:js|mjs|cjs)$/,
+  exclude: /node_modules/,
+  use: {
+    loader: 'babel-loader',
+    options: {
+      presets: [['@babel/preset-env', { targets: 'defaults' }]]
+    }
+  }
+};
+
 module.exports = {
   mode: 'development',
   entry: './src/main.js',
@@ -22,7 +33,7 @@ module.exports = {
   },
 
   module: {
-    rules: [cssRule, imgRule, fontRule]
+    rules: [cssRule, imgRule, fontRule, babelRule]
   },
 
   plugins: [
@@ -39,6 +50,6 @@ module.exports = {
     watchFiles: ['src/*.html'],
     hot: true,
     open: true,
-    port: 8080,
+    port: 8080
   }
 };
