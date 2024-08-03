@@ -1,14 +1,10 @@
 const path = require('node:path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const imgRule = { test: /\.(png|svg|jpg|jpeg|gif)$/i, type: 'asset/resource' };
 
-const cssRule = {
-  test: /\.css$/i,
-  use: ['style-loader', 'css-loader']
-};
+const cssRule = { test: /\.css$/i, use: ['style-loader', 'css-loader'] };
 
 const fontRule = {
   test: /\.(woff|woff2|eot|ttf|otf)$/i,
@@ -26,35 +22,23 @@ const babelRule = {
   }
 };
 
-const miniCssRule = {
-  test: /\.css$/i,
-  use: [MiniCssExtractPlugin.loader, 'css-loader']
-};
-
 module.exports = {
   mode: 'development',
   entry: './src/main.js',
   output: {
-    filename: 'bundle.[contenthash].js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true
   },
 
   module: {
-    rules: [cssRule, imgRule, fontRule, babelRule, miniCssRule]
+    rules: [cssRule, imgRule, fontRule, babelRule]
   },
 
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'src/index.html',
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true
-      }
-    }),
-    new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css'
+      template: 'src/index.html'
     })
   ],
 
